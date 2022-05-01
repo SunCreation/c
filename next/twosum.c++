@@ -8,6 +8,7 @@
 using namespace std;
 
 int main(){
+    freopen("../inputs/twosum","r", stdin);
     map<int, int> numdict;
     // map<int, int>::iterator p;
 
