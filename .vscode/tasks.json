@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "mia",
+            "group": "build",
+            "command": "bash",
+            "args": [
+                "-c", "cd ${fileDirname} && gcc -g ${file} -o ../exec/${fileBasenameNoExtension}"
+            ]
+        },
+        {
+            "label": "mia++",
+            "group": "build",
+            "command": "bash",
+            "args": [
+                "-c", "cd ${fileDirname} && g++ -g ${file} -o ../exec/${fileBasenameNoExtension}"
+            ]
+        },
+        {
+            "label": "c-test",
+            "group": "test",
+            "command": "bash",
+            "args":[
+                "-c", "cd ${fileDirname} && gcc -g ${file} -o test && ./test && rm test"
+            ]
+        },
+        {
+            "label": "run",
+            "group": "test",
+            "command": "bash",
+            "args": [
+                "-c", "cd ${fileDirname} && ./../exec/${fileBasenameNoExtension}"
+            ]
+        }
+
+    ]
+}
