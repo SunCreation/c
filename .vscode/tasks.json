@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "mia",
+            "label": "compile_c",
             "group": "build",
             "command": "bash",
             "args": [
@@ -10,7 +10,7 @@
             ]
         },
         {
-            "label": "mia++",
+            "label": "compile_c++",
             "group": "build",
             "command": "bash",
             "args": [
@@ -22,11 +22,19 @@
             "group": "test",
             "command": "bash",
             "args":[
-                "-c", "cd ${fileDirname} && gcc -g ${file} -o test && ./test && rm test"
+                "-c", "cd ${fileDirname} && gcc -g ${file} -o temp && ./temp && rm temp"
             ]
         },
         {
-            "label": "run",
+            "label": "c++test",
+            "group": "test",
+            "command": "bash",
+            "args":[
+                "-c", "cd ${fileDirname} && g++ -g ${file} -o temp && ./temp && rm temp"
+            ]
+        },
+        {
+            "label": "c_run",
             "group": "test",
             "command": "bash",
             "args": [

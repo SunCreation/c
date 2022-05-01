@@ -16,7 +16,7 @@ int main(){
     
     numdict.find(4);
 
-    printf("%d",*numdict.find(2));
+    printf("%d",numdict.find(3));
 
     return 0;
 }
@@ -36,7 +36,7 @@ int main(){
 //     myMap["Joe"] = 38;
 //     myMap["Joe"] = 50;
 //     myMap["Sue"] = 75;
-//     p = myMap.find("Joe"); //iterator ¹ÝÈ¯
+//     p = myMap.find("Joe"); //iterator ï¿½ï¿½È¯
 //     myMap.erase(p);
 //     myMap.erase("Sue");
 //     p = myMap.find("Joe");
