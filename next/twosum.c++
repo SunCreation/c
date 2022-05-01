@@ -45,3 +45,22 @@ int main(){
 //         cout << "(" << p->first << "," << p->second << ")\n";
 //     }
 // }
+// class Solution {
+//     map<int, int> num_index;
+//     vector<int> answer;
+// public:
+//     vector<int> twoSum(vector<int>& nums, int target) {
+//         int count=0;
+//         for(int num: nums){
+//             if(num_index[target-num]!=0) {
+//                 answer.push_back(num_index[target-num]-1);
+//                 answer.push_back(count);
+//                 return answer;
+//             };
+//             count++;
+//             num_index[num]=count;
+            
+//         }
+//         return answer;
+//     }
+// };
