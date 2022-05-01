@@ -112,8 +112,8 @@ int main()
 #include <utility>
 
 using namespace std;
-// vector<°¡°Ý,-ÁÖ¹®¹øÈ£,¼ö·®>
-// vector<°¡°Ý,ÁÖ¹®¹øÈ£,¼ö·®>
+// vector<ê°€ê²©,-ì£¼ë¬¸ë²ˆí˜¸,ìˆ˜ëŸ‰>
+// vector<ê°€ê²©,ì£¼ë¬¸ë²ˆí˜¸,ìˆ˜ëŸ‰>
 using triev = vector<vector<vector<int>>>;
 using twinv = vector<vector<int>>;
 triev buycall;
