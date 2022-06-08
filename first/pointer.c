@@ -5,13 +5,13 @@ int main(void) {
     // //  [철수] : 101 호 -> a메모리공간의 주소
     // //  [영희] : 201 호
     // //  [민수] : 301 호
-    // int chursu = 1;
-    // int younghh = 2;
-    // int minsu = 3;
+    int chursu = 1;
+    int younghh = 2;
+    int minsu = 3;
 
-    // printf("철수네 주소 : %d, 암호 : %d\n", &chursu, chursu); // 변수 앞에 &를 놓으면 주소를 알려준다.
-    // printf("영희네 주소 : %d, 암호 : %d\n", &younghh, younghh);
-    // printf("민수네 주소 : %d, 암호 : %d\n", &minsu, minsu);
+    printf("철수네 주소 : %d, 암호 : %d\n", &chursu, chursu); // 변수 앞에 &를 놓으면 주소를 알려준다.
+    printf("영희네 주소 : %p, 암호 : %d\n", &younghh, younghh);
+    printf("민수네 주소 : %d, 암호 : %d\n", &minsu, minsu);
 
 
     // // 미션맨!

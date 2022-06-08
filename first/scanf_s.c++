@@ -4,7 +4,7 @@ int main()
 {
     // 아직 실패
     char str[32];
-    scanf("%s", str, sizeof(str));
+    scanf("%s", str); //, sizeof(str)
     int i;
     scanf("%d", &i);
 

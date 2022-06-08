@@ -13,6 +13,8 @@ int main(void) {
     // for (int i = 0; i < sizeof(c_array); i++) {
     //     printf("%c\n", c_array[i]);
     // }
-    
+    char * hhh;
+    scanf("%s", hhh);
+    printf("%s", hhh);
 
 }

@@ -34,7 +34,7 @@
             ]
         },
         {
-            "label": "c_run",
+            "label": "run",
             "group": "test",
             "command": "bash",
             "args": [
