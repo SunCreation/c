@@ -77,12 +77,12 @@ int main(void)
 
     while (!feof(stdin)) {
         scanf("%s", expression);
-        printf("%s\n", expression);
+        // printf("%s\n", expression);
         // divide_conquer(expression);
-        printf("pre_size is %ld\n", sizeof expression);
-        cout << expression << "\n";
-        print_array(expression);
-        printf("\nhi\n");
+        // printf("pre_size is %ld\n", sizeof expression);
+        // cout << expression << "\n";
+        // print_array(expression);
+        // printf("\nhi\n");
         ex = ex2vec(expression);
         array = divide_conquer(ex);
         print_array(array);
@@ -127,7 +127,7 @@ int i;
 
 struct vec *divide_conquer(struct vec *ex) {
     struct vec * arr = (struct vec*) malloc(sizeof(struct vec));
-    printf("%d", sizeof(struct vec));
+    printf("%ld", sizeof(struct vec));
     // struct vec * curr = arr->next;
     // array[0] = 1;
     // array[1] = 100;
@@ -147,12 +147,14 @@ struct vec *ex2vec(char * expression) {
     // num[1]='s';
     // num[2]='\0';
     struct vec *hi = (struct vec*) malloc(sizeof(struct vec));
+    struct vec *cur = hi;
     print_array(expression);
     for (int i=0;*(c=&expression[i])!='\0';i++) {
         // if (c)
         // printf("%c\n",c); 아래와 같다.
         // cout << c << '\n'; //1 ->
         printf("%c\n", *c); //2 -> 이 둘의 차이는 매우 좋다.
+        cur->data=c;
         // num += it;
     }
     return hi;
@@ -183,6 +185,7 @@ int print_array(char * arr) {
         // printf("%d  %d\n", arr[i], *arr);
         cout << *&arr[i]; //주소 값 확인 가능.
     }
+    printf("\n");
     return 0;
 }
 
