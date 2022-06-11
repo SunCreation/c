@@ -25,8 +25,9 @@ struct vec{
     struct vec *next;
     char what;
     // void *data;
-    int (*fc)(int,int);
+    short len;
     int num;
+    int (*fc)(int,int);
 };
 
 struct vec *ex2vec(char * expression);
@@ -86,7 +87,7 @@ int main(void)
         // printf("\nhi\n");
         ex = ex2vec(expression);
         array = divide_conquer(ex);
-        print_array(ex);
+        // print_array(ex);
         printf("\n\n");
         // printf("%d %ld\n", array->data, sizeof array);
         // printf("%d %d\n", array[0], array[1]);
@@ -166,7 +167,9 @@ struct vec *ex2vec(char * expression) {
 
 struct vec *divide_conquer(struct vec *ex) {
     struct vec * arr = (struct vec*) malloc(sizeof(struct vec));
-    printf("%ld", sizeof(struct vec));
+    printf("%ld\n", sizeof(struct vec));
+    print_array(ex);
+
     // struct vec * curr = arr->next;
     // array[0] = 1;
     // array[1] = 100;
