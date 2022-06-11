@@ -4,6 +4,7 @@
 #include <map>
 #include <time.h>
 #include <stdlib.h>
+#include <math.h>
 
 using namespace std;
 
@@ -17,19 +18,19 @@ int print_array(struct vec * arr);
 // 위에처럼 할 시, 3개의 구조에 대해 처리 가능해진다.
 
 // using intfunc = (int*)(int,int);
-void *wow(char str);
+void *str2point(char *str);
 // map <char, int*(int,int)> mymap; 지금같은 때는 굳이 안써도 되겠다. 사용 가능한지는 체크.
 char oper[] = "+-*";
 struct vec{
     struct vec *next;
     char what;
-    void *data;
-    // int (*func)(int,int);
-    // int length;
+    // void *data;
+    int (*fc)(int,int);
+    int num;
 };
 
-struct vec *divide_conquer(struct vec *ex);
 struct vec *ex2vec(char * expression);
+struct vec *divide_conquer(struct vec *ex);
 
 int main(void)
 {
@@ -43,11 +44,11 @@ int main(void)
     struct vec * ex = (struct vec*) malloc(sizeof(struct vec));
     struct vec * array = (struct vec*) malloc(sizeof(struct vec));
     clock_t start, end;
-    double result;
-    float answer;
+    // double result;
+    // float answer;
     int (*hi)(int,int);
     hi=add;
-    printf("%d\n",((int (*)(int,int))(wow('*')))(1,2)); //wowowowowowow
+    // printf("%d\n",((int (*)(int,int))(str2point('*')))(1,2)); //wowowowowowow
     // 원하는 함수 포인터로 불러오기 성공
 
     // int arr[10];
@@ -85,7 +86,7 @@ int main(void)
         // printf("\nhi\n");
         ex = ex2vec(expression);
         array = divide_conquer(ex);
-        print_array(array);
+        print_array(ex);
         printf("\n\n");
         // printf("%d %ld\n", array->data, sizeof array);
         // printf("%d %d\n", array[0], array[1]);
@@ -120,27 +121,13 @@ int main(void)
     return 0;
 
 }
-int hih;
-int it;
-int i;
+// int hih;
+// int it;
+// int i;
 // struct vec curr;
 
-struct vec *divide_conquer(struct vec *ex) {
-    struct vec * arr = (struct vec*) malloc(sizeof(struct vec));
-    printf("%ld", sizeof(struct vec));
-    // struct vec * curr = arr->next;
-    // array[0] = 1;
-    // array[1] = 100;
-    // (*array).next = &curr;
-    arr->data=ex->data;
-    hih = sizeof ex;
-    // print_array(expression);
-    printf("its size is %d\n", hih);
-    return arr;
-}
-char *num;
-// char c;
 struct vec *ex2vec(char * expression) {
+    int num;
     char *c;
     // char *num;
     // num[0] = 's';
@@ -150,14 +137,45 @@ struct vec *ex2vec(char * expression) {
     struct vec *cur = hi;
     print_array(expression);
     for (int i=0;*(c=&expression[i])!='\0';i++) {
+        struct vec * new_ = (struct vec *)malloc(24);
+
         // if (c)
         // printf("%c\n",c); 아래와 같다.
         // cout << c << '\n'; //1 ->
-        printf("%c\n", *c); //2 -> 이 둘의 차이는 매우 좋다.
-        cur->data=c;
+        // printf("%c\n", *c); //2 -> 이 둘의 차이는 매우 좋다.
+        // cur->data=c;
         // num += it;
+        cur->what='o';
+        if (*c=='+')
+            cur->fc=add;
+        else if (*c=='-')
+            cur->fc=sub;
+        else if (*c=='*')
+            cur->fc=mul;
+        else {
+            cur->what='d';
+            cur->num=(num=atoi(c));
+            i += (int)pow(num,(1.0/10.0))-1;
+        }
+        cur->next = new_;
+        cur = cur->next;
     }
+    cur->what='q';
     return hi;
+}
+
+struct vec *divide_conquer(struct vec *ex) {
+    struct vec * arr = (struct vec*) malloc(sizeof(struct vec));
+    printf("%ld", sizeof(struct vec));
+    // struct vec * curr = arr->next;
+    // array[0] = 1;
+    // array[1] = 100;
+    // (*array).next = &curr;
+    // arr->data=ex->data; data는 비효율적이어서 안쓰기로 함.
+    // hih = sizeof ex;
+    // print_array(expression);
+    printf("its size is %ld\n", sizeof ex);
+    return arr;
 }
 int add(int x, int y){
     return x+y;
@@ -169,35 +187,45 @@ int sub(int x, int y){
     return x-y;
 }
 int print_array(int * arr) {
-    hih = sizeof(arr);
-    printf("its size is %d\n", hih);
-    for (i=0;arr[i]='\0';i++){
-        it = arr[i];
+    // hih = sizeof(arr);
+    int it;
+    printf("its size is %ld\n", sizeof(arr));
+    for (int i=0;(it=arr[i])='\0';i++){
+        // int it = arr[i];
         // printf("%d  %d\n", arr[i], *arr);
-        cout << *&arr[i] <<'\n'; //주소 값 확인 가능.
+        cout << *&it <<'\n'; //주소 값 확인 가능.
     }
     return 0;
 }
 int print_array(char * arr) {
-    hih = sizeof(arr);
-    for (i=0;arr[i]!='\0';i++){
-        it = arr[i];
+    // hih = sizeof(arr);
+    char it;
+    for (int i=0;(it=arr[i])!='\0';i++){
+        // it = arr[i];
         // printf("%d  %d\n", arr[i], *arr);
-        cout << *&arr[i]; //주소 값 확인 가능.
+        cout << *&it; //주소 값 확인 가능.
     }
     printf("\n");
     return 0;
 }
 
 int print_array(struct vec * arr) {
+    struct vec * cur = arr;
 
+    while (cur->what!='q'){
+        cout << cur->num <<'\n';
+        cur = cur->next;
+    }
     return 0;
 }
-
-void *wow(char str) {
-    if (str=='+')
+// 아래처럼 쓰면 좋을 줄 알았는데, 그렇지 않다.
+void *str2point(char *str) {
+    if (*str=='+')
         return (void*)add;
-    if (str=='-')
+    else if (*str=='-')
         return (void*)sub;
-    else return (void*)mul;
+    else if (*str=='*')
+        return (void*)mul;
+    else
+        return (void*)str;
 }
