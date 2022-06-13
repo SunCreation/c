@@ -22,7 +22,8 @@ int main(void)
     // printf("%d", sizeof(void *));
     // printf("%ld", sizeof(add)); ¿Ã∞« æ»µ !
     void * hh = hi;
-    printf("%d",atoi(ex));
+    int h;
+    printf("%d",h);
 
     // while (!feof(stdin)) {
 

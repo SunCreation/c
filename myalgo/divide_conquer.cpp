@@ -148,15 +148,16 @@ struct vec *ex2vec(char * expression) {
         // num += it;
         cur->what='o';
         if (*c=='+')
-            cur->fc=add;
+            cur->fc=add, printf("hi");
         else if (*c=='-')
-            cur->fc=sub;
+            cur->fc=sub, printf("hi");
         else if (*c=='*')
-            cur->fc=mul;
+            cur->fc=mul, printf("hi");
         else {
             cur->what='d';
             cur->num=(num=atoi(c));
-            i += (int)pow(num,(1.0/10.0))-1;
+            i += (int)log(num);
+            printf("%d  %d\n", num, (int)log10f(num));
         }
         cur->next = new_;
         cur = cur->next;
@@ -169,6 +170,7 @@ struct vec *divide_conquer(struct vec *ex) {
     struct vec * arr = (struct vec*) malloc(sizeof(struct vec));
     printf("%ld\n", sizeof(struct vec));
     print_array(ex);
+    printf("%p", &ex[5].num);
 
     // struct vec * curr = arr->next;
     // array[0] = 1;
@@ -217,6 +219,7 @@ int print_array(struct vec * arr) {
 
     while (cur->what!='q'){
         cout << cur->num <<'\n';
+        // cout << &cur->num <<'\n';
         cur = cur->next;
     }
     return 0;
